@@ -1,0 +1,28 @@
+.cart-container {
+  padding: 2rem;
+}
+
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+}
+
+.cart-total {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.custom-btn {
+  background-color:#694B1F;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn:hover {
+  background-color: #fff;
+  color: #694B1F; 
+  transform: scale(1.05);
+}

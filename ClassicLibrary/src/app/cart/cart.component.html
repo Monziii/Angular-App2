@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="section-header">
+    <h1>Shopping Cart</h1>
+    <p class="classic-text">Review your selected classics</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div *ngIf="cartItems.length === 0" class="text-center py-5">
+        <h3 class="classic-text">Your cart is empty</h3>
+        <p class="classic-text">You haven't added any books yet</p>
+        <button class="btn btn-primary" routerLink="/catalog">Browse Books</button>
+      </div>
+
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <div class="row align-items-center">
+          <div class="col-md-3">
+            <img [src]="item.book.imageUrl" [alt]="item.book.title" class="img-fluid rounded">
+          </div>
+          <div class="col-md-6">
+            <h4 class="book-title">{{ item.book.title }}</h4>
+            <p class="book-author">by {{ item.book.author }}</p>
+            <p class="book-price">${{ item.book.price }}</p>
+          </div>
+          <div class="col-md-3">
+            <div class="d-flex align-items-center gap-2">
+              <button class="btn btn-outline-primary" (click)="decreaseQuantity(item)">-</button>
+              <span class="mx-2">{{ item.quantity }}</span>
+              <button class="btn btn-outline-primary" (click)="increaseQuantity(item)">+</button>
+            </div>
+            <button class="btn btn-danger mt-2" (click)="removeFromCart(item)">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="cart-total">
+        <h3>Order Summary</h3>
+        <div class="d-flex justify-content-between mb-2">
+          <span>Total Books:</span>
+          <span>{{ getTotalItems() }}</span>
+        </div>
+        <div class="d-flex justify-content-between mb-3">
+          <span>Total Amount:</span>
+          <span>${{ getTotalPrice() | number:'1.2-2' }}</span>
+        </div>
+        <button class="btn btn-success w-100" routerLink="/checkout" [disabled]="cartItems.length === 0">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

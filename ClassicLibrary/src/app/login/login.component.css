@@ -1,0 +1,45 @@
+
+.form-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.alert {
+  margin-bottom: 1rem;
+}
+
+.alert-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+}
+
+.custom-btn {
+  background-color:#694B1F;
+  color: #fff;
+  border: none; 
+  font-weight: bold; 
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.custom-btn:hover {
+  background-color: #fff;
+  color: #694B1F;  
+  transform: scale(1.05); 
+}

@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="section-header">
+    <h1>Wishlist</h1>
+    <p class="classic-text">Your saved classic literature</p>
+  </div>
+
+  <div class="row">
+    <div *ngIf="wishlistItems.length === 0" class="col-12 text-center py-5">
+      <h3 class="classic-text">Your wishlist is empty</h3>
+      <p class="classic-text">You haven't added any books to your wishlist yet</p>
+      <button class="btn btn-primary" routerLink="/catalog">Browse Books</button>
+    </div>
+
+    <div class="col-md-4 mb-4" *ngFor="let book of wishlistItems">
+      <div class="wishlist-item">
+        <img [src]="book.imageUrl" [alt]="book.title" class="book-image">
+        <div class="book-info">
+          <h3 class="book-title">{{ book.title }}</h3>
+          <p class="book-author">by {{ book.author }}</p>
+          <div class="book-meta">
+            <div class="book-category">{{ book.category }}</div>
+            <div class="book-genre">{{ book.genre }}</div>
+            <div class="book-year">{{ book.publicationYear }}</div>
+          </div>
+          <p class="book-description">{{ book.description }}</p>
+          <p class="book-price">${{ book.price }}</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary" (click)="addToCart(book)">
+              Add to Cart
+            </button>
+            <button class="btn btn-danger" (click)="removeFromWishlist(book)">
+              Remove from Wishlist
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

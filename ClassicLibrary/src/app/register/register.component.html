@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="section-header">
+        <h1>Register for Classic Library</h1>
+        <p class="classic-text">Create your account to access all features</p>
+      </div>
+
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                formControlName="username"
+                placeholder="Enter your username">
+              <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched"
+                   class="alert alert-danger mt-2">
+                Username is required
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                placeholder="Enter your email">
+              <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+                   class="alert alert-danger mt-2">
+                Valid email is required
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+                placeholder="Enter your password">
+              <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+                   class="alert alert-danger mt-2">
+                Password is required (minimum 6 characters)
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                formControlName="confirmPassword"
+                placeholder="Confirm your password">
+              <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched"
+                   class="alert alert-danger mt-2">
+                Password confirmation is required
+              </div>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+                Register
+              </button>
+            </div>
+
+            <div class="text-center mt-3">
+              <p class="classic-text">Already have an account?
+                <a routerLink="/login" class="text-decoration-none">Login here</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
