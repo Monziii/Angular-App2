@@ -1,4 +1,10 @@
 
+<!-- Cart Confirmation Message -->
+<div *ngIf="showCartConfirmation" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+  <strong>{{ addedBookTitle }}</strong> has been added to your cart!
+  <button type="button" class="btn-close" (click)="showCartConfirmation = false"></button>
+</div>
+
 <form (ngSubmit)="searchBooks()" #searchForm="ngForm" class="mb-4 w-75 d-block mx-auto">
   <input type="text" [(ngModel)]="searchQuery" name="searchQuery" placeholder="Search by title or author" required
     class="form-control" #searchInput="ngModel" />

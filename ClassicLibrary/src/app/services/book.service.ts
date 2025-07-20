@@ -1,10 +1,20 @@
+/**
+ * Book Service
+ * Provides data and functionality for managing classic literature books
+ * This service contains a curated collection of classic books and methods to filter and retrieve them
+ */
+
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'  // Service is available throughout the application
 })
 export class BookService {
+  /**
+   * Private array containing all available books in the library
+   * This is a curated collection of classic literature from various authors and periods
+   */
   private books: Book[] = [
     {
       id: 1,
@@ -308,24 +318,50 @@ export class BookService {
     }
   ];
 
+  /**
+   * Retrieves a paginated subset of books
+   * @param page - The page number (1-based indexing)
+   * @param pageSize - Number of books per page
+   * @returns Array of books for the specified page
+   */
   getBooks(page: number, pageSize: number): Book[] {
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    return this.books.slice(startIndex, endIndex);
+    const startIndex = (page - 1) * pageSize;  // Calculate starting index for the page
+    const endIndex = startIndex + pageSize;     // Calculate ending index for the page
+    return this.books.slice(startIndex, endIndex);  // Return books for the specified page
   }
 
+  /**
+   * Calculates the total number of pages needed to display all books
+   * @param pageSize - Number of books per page
+   * @returns Total number of pages
+   */
   getTotalPages(pageSize: number): number {
-    return Math.ceil(this.books.length / pageSize);
+    return Math.ceil(this.books.length / pageSize);  // Round up to ensure all books are displayed
   }
 
+  /**
+   * Filters books by their category
+   * @param category - The category to filter by (e.g., 'Romance', 'Adventure')
+   * @returns Array of books matching the specified category
+   */
   getBooksByCategory(category: string): Book[] {
     return this.books.filter(book => book.category === category);
   }
 
+  /**
+   * Filters books by their genre
+   * @param genre - The genre to filter by (e.g., 'Victorian Literature', 'American Literature')
+   * @returns Array of books matching the specified genre
+   */
   getBooksByGenre(genre: string): Book[] {
     return this.books.filter(book => book.genre === genre);
   }
 
+  /**
+   * Searches for books by author name (case-insensitive partial match)
+   * @param author - The author name to search for
+   * @returns Array of books by authors matching the search term
+   */
   getBooksByAuthor(author: string): Book[] {
     return this.books.filter(book => book.author.toLowerCase().includes(author.toLowerCase()));
   }
